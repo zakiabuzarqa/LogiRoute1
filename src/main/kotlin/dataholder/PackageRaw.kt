@@ -24,3 +24,15 @@ data class RouteRaw(
     val distanceKm: String,
     val typicalDelayMin: String,
 )
+
+enum class warehousesregionalZone {
+    CENTRAL, WEST, SOUTH, EAST, NORTH
+}
+
+data class WarehouseRaw(
+    val id: String,
+    val name: String,
+    val regionalZone: warehousesregionalZone,
+    val latitude: String,
+    val longitude: String
+)
