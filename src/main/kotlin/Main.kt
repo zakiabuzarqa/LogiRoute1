@@ -1,10 +1,10 @@
 package org.izaki
 
-import org.izaki.dataholder.PackagePriority
-import org.izaki.dataholder.PackageRaw
+import org.izaki.dataholder.RouteRaw
 import org.izaki.parsers.loadCsvFile
 import org.izaki.parsers.parsePackages
-import java.io.File
+import org.izaki.parsers.parseRoutes
+import org.izaki.parsers.parsefleet
 
 fun main() {
     val packagesCsvLines = loadCsvFile("src/main/resources/packages.csv")
@@ -13,6 +13,6 @@ fun main() {
     val warehousesCsvLines = loadCsvFile("src/main/resources/warehouses.csv")
 
     val packageRawList = parsePackages(packagesCsvLines)
-
-    println(packageRawList)
+    val fleetRawList = parsefleet(fleetCsvLines)
+    val routeRawList = parseRoutes(routesCsvLines)
 }
