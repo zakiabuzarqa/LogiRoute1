@@ -1,7 +1,7 @@
 package org.izaki.dataholder
 
 enum class PackagePriority{
-    LOW, HIGH, STANDARD
+    LOW, URGENT, STANDARD
 }
 
 data class PackageRaw(

@@ -55,7 +55,7 @@ private fun parsePackageWeight(splittedPackage: String): Float {
 
 private fun parsePackagePriority(splittedPackage: String): PackagePriority {
     val priorityString = splittedPackage.trim().uppercase()
-    val safePriorityString = if (priorityString !in listOf("LOW", "HIGH", "STANDARD")) "LOW" else priorityString
+    val safePriorityString = if (priorityString !in listOf("LOW", "URGENT", "STANDARD")) "LOW" else priorityString
     val priority = PackagePriority.valueOf(safePriorityString)
     return priority
 }
