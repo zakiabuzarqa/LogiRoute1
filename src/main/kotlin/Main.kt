@@ -1,8 +1,6 @@
 package org.izaki
-
 import org.izaki.dataholder.PackagePriority
 import org.izaki.dataholder.PackageRaw
-
 import org.izaki.parsers.loadCsvFile
 import org.izaki.parsers.parsePackages
 import org.izaki.parsers.parseRoutes
@@ -21,6 +19,5 @@ fun main() {
     val routeRawList = parseRoutes(routesCsvLines)
     val warehouseRawList = parsewarehouses(warehousesCsvLines)
     val sortedPackages = selectionSortPackages(packageRawList)
-    println(sortedPackages)
 }
 

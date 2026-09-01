@@ -1,11 +1,11 @@
 package org.izaki.parsers
 import org.izaki.dataholder.PackagePriority
-import org.izaki.dataholder.fleetRaw
+import org.izaki.dataholder.FleetRaw
 
 
-public fun parsefleet(fleetsCsvLines: List<String>): MutableList<fleetRaw> {
+public fun parsefleet(fleetsCsvLines: List<String>): MutableList<FleetRaw> {
 
-    val fleets = mutableListOf<fleetRaw>()
+    val fleets = mutableListOf<FleetRaw>()
 
     for (fleetLine in fleetsCsvLines) {
 
@@ -27,12 +27,12 @@ public fun parsefleet(fleetsCsvLines: List<String>): MutableList<fleetRaw> {
 
     return fleets
 }
-fun parsefleetLine(fleetTokens: List<String>): fleetRaw {
+fun parsefleetLine(fleetTokens: List<String>): FleetRaw {
     val id = parseFleetId(fleetTokens[0])
     val  currentHubId= parseCurrentId(fleetTokens[1])
     val maxCapacityKg = fleetTokens[2]
     val costPerKm = fleetTokens[3]
-    return fleetRaw(id, currentHubId, maxCapacityKg, costPerKm)
+    return FleetRaw(id, currentHubId, maxCapacityKg, costPerKm)
 }
 
 private fun parseFleetId(packageToken: String): String {

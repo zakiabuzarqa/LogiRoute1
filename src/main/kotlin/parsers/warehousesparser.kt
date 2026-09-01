@@ -1,7 +1,7 @@
 package org.izaki.parsers
 
 import org.izaki.dataholder.WarehouseRaw
-import org.izaki.dataholder.warehousesregionalZone
+import org.izaki.dataholder.RegionalZone
 
 
 public fun parsewarehouses(warehousesCsvLines: List<String>): MutableList<WarehouseRaw> {
@@ -39,10 +39,10 @@ fun parsewarehouseLine(warehouseTokens: List<String>): WarehouseRaw {
     return WarehouseRaw(id, name, warehouseregionalZone , latitude,longitude )
 }
 
-private fun parsewarehousesregionalZone(regionalZoneString: String): warehousesregionalZone {
+private fun parsewarehousesregionalZone(regionalZoneString: String): RegionalZone {
     val upperZone = regionalZoneString.trim().uppercase()
     val saferegionalZoneString = if (upperZone !in listOf("CENTRAL", "WEST", "SOUTH", "EAST", "NORTH")) "CENTRAL"
     else upperZone
-    return warehousesregionalZone.valueOf(saferegionalZoneString)
+    return RegionalZone.valueOf(saferegionalZoneString)
 }
 
