@@ -1,7 +1,7 @@
 package org.izaki.selectionsort
 
 import org.izaki.dataholder.PackagePriority
-import org.izaki.domain.model.Package
+import org.izaki.domain.model.LogisticsPackage
 
 
 fun getRank(priority: PackagePriority): Int {
@@ -13,8 +13,8 @@ fun getRank(priority: PackagePriority): Int {
 }
 
 
-fun selectionSortPackages(packages: List<Package>): List<Package> {
-    val sortedList = packages.toMutableList()
+fun selectionSortPackages(logisticsPackages: List<LogisticsPackage>): List<LogisticsPackage> {
+    val sortedList = logisticsPackages.toMutableList()
     val n = sortedList.size
 
     for (i in 0 until n - 1) {
@@ -41,7 +41,7 @@ fun selectionSortPackages(packages: List<Package>): List<Package> {
 private fun swapPackages(
     minimumPackagePriorityIndex: Int,
     i: Int,
-    sortedList: MutableList<Package>
+    sortedList: MutableList<LogisticsPackage>
 ) {
     if (minimumPackagePriorityIndex != i) {
         val temp = sortedList[i]

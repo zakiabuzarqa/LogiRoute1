@@ -1,6 +1,8 @@
 package org.izaki
+
 import org.izaki.dataholder.PackagePriority
 import org.izaki.dataholder.PackageRaw
+import org.izaki.domain.DomainGraphBuilder
 import org.izaki.parsers.loadCsvFile
 import org.izaki.parsers.parsePackages
 import org.izaki.parsers.parseRoutes
@@ -18,6 +20,18 @@ fun main() {
     val fleetRawList = parsefleet(fleetCsvLines)
     val routeRawList = parseRoutes(routesCsvLines)
     val warehouseRawList = parsewarehouses(warehousesCsvLines)
-    val sortedPackages = selectionSortPackages(packageRawList)
+
+    val domainGraphBuilder = DomainGraphBuilder()
+
+    val domainGraph = domainGraphBuilder.buildWarehouseGraph(
+        warehouseRawList,
+        packageRawList,
+        routeRawList,
+        fleetRawList
+    )
+
+    val sortedPackages = selectionSortPackages(domainGraph.packages)
+
+    sortedPackages.forEach { println(it) }
 }
 

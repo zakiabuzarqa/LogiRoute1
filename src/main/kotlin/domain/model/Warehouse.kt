@@ -1,22 +1,26 @@
 package org.izaki.domain.model
 
 import org.izaki.dataholder.RegionalZone
-import org.izaki.domain.model.Package
 
 data class Warehouse(
     val id: String,
     val name: String,
     val regionalZone: RegionalZone,
-    private val cargoQueue: MutableList<Package> = mutableListOf(),
+    private val cargoQueue: MutableList<LogisticsPackage> = mutableListOf(),
     private val outgoingRoutes: MutableList<Route> = mutableListOf(),
     private val stationedVehicles: MutableList<Vehicle> = mutableListOf(),
 ){
-    fun addPackage(packages: Package) {
+
+    override fun toString(): String {
+        return id
+    }
+
+    fun addPackage(packages: LogisticsPackage) {
         cargoQueue.add(packages)
     }
 
-    fun addPackages(packages: List<Package>) {
-        cargoQueue.addAll(packages)
+    fun addPackages(logisticsPackages: List<LogisticsPackage>) {
+        cargoQueue.addAll(logisticsPackages)
     }
 
     fun addRoute(route: Route) {
@@ -27,8 +31,8 @@ data class Warehouse(
         outgoingRoutes.addAll(route)
     }
 
-    fun addVehicle(vehicle: Vehicle) {
-        stationedVehicles.add(vehicle)
+    fun addVehicle(vehicle: List<Vehicle>) {
+        stationedVehicles.addAll(vehicle)
     }
 
     fun addVehicles(vehicle: Vehicle) {
