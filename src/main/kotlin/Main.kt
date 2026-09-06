@@ -1,14 +1,12 @@
 package org.izaki
 
-import org.izaki.dataholder.PackagePriority
-import org.izaki.dataholder.PackageRaw
 import org.izaki.domain.DomainGraphBuilder
 import org.izaki.parsers.loadCsvFile
 import org.izaki.parsers.parsePackages
 import org.izaki.parsers.parseRoutes
 import org.izaki.parsers.parsefleet
 import org.izaki.parsers.parsewarehouses
-import org.izaki.selectionsort.selectionSortPackages
+import org.izaki.quick_sort.quickSortPackages
 
 fun main() {
     val packagesCsvLines = loadCsvFile("src/main/resources/packages.csv")
@@ -30,8 +28,14 @@ fun main() {
         fleetRawList
     )
 
-    val sortedPackages = selectionSortPackages(domainGraph.packages)
+    val sortedPackages = quickSortPackages(domainGraph.packages.take(1000))
 
-    sortedPackages.forEach { println(it) }
+    sortedPackages.forEach {
+        println(it)
+    }
+
+//    val sortedPackages = selectionSortPackages(domainGraph.packages)
+//
+//    sortedPackages.forEach { println(it) }
 }
 
