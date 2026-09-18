@@ -7,6 +7,7 @@ import org.izaki.parsers.parseRoutes
 import org.izaki.parsers.parsefleet
 import org.izaki.parsers.parsewarehouses
 import org.izaki.quick_sort.quickSortPackages
+import org.izaki.repositories.CsvPackagesRepository
 
 fun main() {
     val packagesCsvLines = loadCsvFile("src/main/resources/packages.csv")
@@ -28,14 +29,14 @@ fun main() {
         fleetRawList
     )
 
-    val sortedPackages = quickSortPackages(domainGraph.packages.take(1000))
+    val csvPackagesRepository = CsvPackagesRepository(
+        "src/main/resources/packages.csv",
+        "src/main/resources/warehouses.csv"
+    )
+
+    val sortedPackages = quickSortPackages(csvPackagesRepository.getAll())
 
     sortedPackages.forEach {
         println(it)
     }
-
-//    val sortedPackages = selectionSortPackages(domainGraph.packages)
-//
-//    sortedPackages.forEach { println(it) }
 }
-
