@@ -1,6 +1,6 @@
 package org.izaki.logiroute.decorator
 
-data class concretePackage (
+data class ConcretePackage (
     val trackingId: String,
     val weightKg: Double,
     val baseRate: Double
